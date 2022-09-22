@@ -32,7 +32,7 @@ streamlit.write('thanks for adding', fruity )
 
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-fruityvice_response1 = requests.get("https://fruityvice.com/api/fruit/" + fruity)
+#fruityvice_response1 = requests.get("https://fruityvice.com/api/fruit/" + fruity)
 ##streamlit.text(fruityvice_response.json())
 
 # write your own comment -what does the next line do? 
