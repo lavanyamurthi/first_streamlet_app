@@ -46,10 +46,10 @@ streamlit.header("the fruit load list contains")
 streamlit.dataframe(my_data_rows)
 
 fruity = streamlit.text_input('What fruit would you like information about?','Kiwi')
-streamlit.write('The user entered ', fruity )
+streamlit.write('thanks for adding', fruity )
 
-import requests
-fruityvice_f = requests.get("https://fruityvice.com/api/fruit/" + fruity)
+# import requests
+# fruityvice_f = requests.get("https://fruityvice.com/api/fruit/" + fruity)
 ##streamlit.text(fruityvice_response.json())
 
 # write your own comment -what does the next line do? 
