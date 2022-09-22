@@ -31,13 +31,20 @@ streamlit.header("Fruityvice Fruit Advice!")
 
 fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 streamlit.write('The user entered ', fruit_choice)
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-streamlit.text(fruityvice_response.json())
+
+def get_fruityvice_data(this_fruit_choice):
+  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+  fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+  return fruityvice_normalized
+  
+
+
+#streamlit.text(fruityvice_response.json())
 
 # write your own comment -what does the next line do? 
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+
 # write your own comment - what does this do?
-streamlit.dataframe(fruityvice_normalized)
+#streamlit.dataframe(fruityvice_normalized)
 
 
 
@@ -47,12 +54,9 @@ try:
   if not fruit_choice:
     streamlit.error("Please select a fruit to get inf")
   else:
-     fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-     fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-     streamlit.dataframe(fruityvice_normalized)
-
-# add_my_fruit = streamlit.text_input('What fruit would you like information about?','Kiwi')
-# streamlit.write('The user entered ', add_my_fruit)
+    backfrom_function=get_fruityvice_data(fruit_choice)
+    streamlit.dataframe(backfrom_function)
+    
 except URLError as e:
     streamlit.stop()
 
@@ -67,5 +71,4 @@ streamlit.dataframe(my_data_rows)
 my_cur.execute("insert into fruit_load_list values('from streamlit')")
 
 
-# streamlit.header("Fruityvice Fruit Advice!")
 
