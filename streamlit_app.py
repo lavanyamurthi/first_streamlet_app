@@ -60,7 +60,7 @@ try:
 except URLError as e:
     streamlit.stop()
 
-streamlit.header("the fruit loaded list)
+streamlit.header("the fruit loaded list")
 def get_fruit_load_list():
                  with my_cnx.cursor() as my_cur:
                  my_cur.execute("SELECT * from fruit_load_list")
